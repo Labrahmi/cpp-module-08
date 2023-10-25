@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: macbook <macbook@student.42.fr>            +#+  +:+       +#+         #
+#    By: ylabrahm <ylabrahm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/18 18:12:29 by macbook           #+#    #+#              #
-#    Updated: 2023/10/18 18:23:36 by macbook          ###   ########.fr        #
+#    Updated: 2023/10/25 18:31:44 by ylabrahm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ OBJS := $(addprefix obj/, $(OBJS))
 
 CC = c++
 RM = rm -f
-CFLAGS = -std=c++98 #-Wall -Wextra -Werror 
+CFLAGS = -std=c++98 -Wall -Wextra -Werror 
 NAME = easyfind
 
 all: $(NAME)
