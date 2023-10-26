@@ -6,12 +6,11 @@
 /*   By: ylabrahm <ylabrahm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:17:02 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/10/26 18:24:43 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/10/26 18:27:04 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MutantStack.hpp"
-#include <list>
 
 int main()
 {
