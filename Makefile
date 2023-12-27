@@ -4,10 +4,8 @@ SRCS_3 = ex02/main.cpp
 
 OBJS_1 := $(SRCS_1:.cpp=.o)
 OBJS_1 := $(addprefix obj/, $(OBJS_1))
-# 
 OBJS_2 := $(SRCS_2:.cpp=.o)
 OBJS_2 := $(addprefix obj/, $(OBJS_2))
-# 
 OBJS_3 := $(SRCS_3:.cpp=.o)
 OBJS_3 := $(addprefix obj/, $(OBJS_3))
 
