@@ -3,19 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   easyfind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macbook <macbook@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ylabrahm <ylabrahm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 18:13:31 by macbook           #+#    #+#             */
-/*   Updated: 2023/10/24 00:27:26 by macbook          ###   ########.fr       */
+/*   Updated: 2023/12/28 22:29:02 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <algorithm>
+#include <exception>
 
 template <typename T>
-bool easyfind(T &container, int occur)
+int easyfind(T &container, int occur)
 {
-    typename T::iterator it;
-    it = std::find(container.begin(), container.end(), occur);
-    return (it != container.end());
+    for (size_t i = 0; i < container.size(); i++)
+    {
+        if (container.at(i) == occur)
+            return (occur);
+    }
+    throw std::exception();
 }

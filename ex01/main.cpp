@@ -6,7 +6,7 @@
 /*   By: ylabrahm <ylabrahm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 18:44:47 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/10/26 10:47:24 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/12/28 23:52:17 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,24 @@
 
 int main()
 {
-    Span sp = Span(10);
-    std::vector<int> numbers;
-    srand(time(0));
-    for (int i = 0; i < 10; i++)
-    {
-        int vl = (rand() % 50);
-        std::cout << vl << std::endl;
-        numbers.push_back(static_cast<int>(vl));
-    }
     try
     {
-        sp.addRange(numbers.begin(), numbers.end());
+        Span sp = Span(7);
+        sp.addNumber(6);
+        sp.addNumber(3);
+        sp.addNumber(17);
+        sp.addNumber(9);
+        sp.addNumber(11);
+        
+        std::vector<int> temp;
+        temp.push_back(1337);
+        temp.push_back(1337);
+
+        sp.addNumber(temp.begin(), temp.end());
+        std::cout << sp.shortestSpan() << std::endl;
+        std::cout << sp.longestSpan() << std::endl;
     }
-    catch (const std::exception &e)
-    {
-        std::cerr << e.what() << '\n';
-        exit(EXIT_FAILURE);
-    }
-    try
-    {
-        std::cout << "shortest Span : " << sp.shortestSpan() << std::endl;
-        std::cout << "longes Span : " << sp.longestSpan() << std::endl;
-    }
-    catch (const std::exception &e)
+    catch(const std::exception& e)
     {
         std::cerr << e.what() << '\n';
     }

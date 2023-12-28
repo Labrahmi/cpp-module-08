@@ -6,7 +6,7 @@
 /*   By: ylabrahm <ylabrahm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 18:44:16 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/10/26 10:49:34 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/12/29 00:03:32 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,48 +54,39 @@ Span &Span::operator=(Span const &rhs)
 
 void Span::addNumber(int number)
 {
-	std::vector<int>::iterator it = std::find(this->vec.begin(), this->vec.end(), number);
-	if ((this->vec.size() + 1) > this->N)
+	if (this->vec.size() == N)
 		throw std::runtime_error("The range has reached maximum capacity!");
-	else if (it != this->vec.end())
-		throw std::runtime_error("Can't add this element, Already exist!");
-	else
-		this->vec.push_back(number);
+	this->vec.push_back(number);
+}
+
+void Span::addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+{
+	std::vector<int> temp;
+	temp.insert(temp.end(), begin, end);
+	unsigned int new_size = temp.size() + this->vec.size();
+	if (this->N < new_size)
+		throw std::runtime_error("Can't insert range: too many items.");
+	vec.insert(vec.end(), begin, end);
 }
 
 unsigned int Span::shortestSpan()
 {
-	unsigned int sp = 0;
-	if (this->vec.size() < 2)
-		throw std::runtime_error("[Span::shortestSpan] : size too low");
-	else
+	std::vector<int> sorted = this->vec;
+	std::sort(sorted.begin(), sorted.end());
+	std::vector<int> diff;
+	for (size_t i = 0; i < sorted.size() - 1; i++)
 	{
-		unsigned int sp = abs(static_cast<int>(vec[0] - vec[1]));
-		for (size_t i = 0; i < this->vec.size() - 1; i++)
-		{
-			unsigned int tem_diff = abs(static_cast<int>(vec[i] - vec[i + 1]));
-			if (tem_diff < sp)
-				sp = tem_diff;
-		}
+		diff.push_back(sorted[i + 1] - sorted[i]);
 	}
-	return (sp);
+	int sp = *(std::min_element(diff.begin(), diff.end()));
+	return sp;
 }
 
 unsigned int Span::longestSpan()
 {
-	unsigned int lp = 0;
-	if (this->vec.size() < 2)
-		throw std::runtime_error("[Span::longestSpan] : size too low");
-	else
-	{
-		for (size_t i = 0; i < this->vec.size() - 1; i++)
-		{
-			unsigned int tem_diff = abs(static_cast<int>(vec[i] - vec[i + 1]));
-			if (tem_diff > lp)
-				lp = tem_diff;
-		}
-	}
-	return lp;
+	int max = *(std::max_element(this->vec.begin(), this->vec.end()));
+	int min = *(std::min_element(this->vec.begin(), this->vec.end()));
+	return (max - min);
 }
 
 /*
